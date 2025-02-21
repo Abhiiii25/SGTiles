@@ -1,0 +1,8 @@
+<form [formGroup]="singupForm" (ngSubmit)="onSignup()" class="m-8 px-8 py-8 pt-10 pb-10 flex flex-col gap-1.5">
+  <input type="text" placeholder="First name" formControlName="fname">
+  <input type="text" placeholder="Last name" formControlName="lname">
+  <input type="email" placeholder="Email" formControlName="email">
+  <input type="password" placeholder="Password" formControlName="password">
+
+  <button type="submit" class="bg-blue-500 text-white rounded-lg">Signup</button>
+</form>

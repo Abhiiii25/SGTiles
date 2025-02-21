@@ -1,0 +1,52 @@
+<div>
+
+<app-image-slider></app-image-slider>
+
+  <div class="w-full flex flex-col mx-auto px-4 md:flex-row items-center">
+    <div class="flex-col flex items-center">
+      <div class="pl-16 mt-12 mb-8">
+        <h1 class="text-lg sm:text-lg md:text-4xl lg:text-5xl font-bold font-serif text-blue-900">Transform Your Space With Premium Tiles</h1>
+        <p class=" text-lg sm:text-lg md:text-2xl lg:text-3xl p-4">Discover our extensive collection of high-quality tiles.</p>
+      </div>
+      <div class="bg-blue-600 hover:bg-blue-400 text-white p-4 rounded-lg cursor-pointer mb-5">
+        <div class="flex gap-1 font-bold text-sm sm:text-sm md:text-lg lg:text-2xl" (click)="gotoProduts()">
+          Explore Product<lucide-angular class="pt-1" [img]="expArrow"></lucide-angular>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="logo.jpg" alt="logo" class="w-full md:w-[480px] m-1  mb-5 max-w-md object-contain">
+    </div>
+  </div>
+
+</div>
+<div class="mx-auto px-4 py-16 mt-12 w-full bg-gray-100">
+  <h1 class="text-2xl sm:text-3xl md:text-5xl lg:text-6xl mb-12 font-bold font-serif text-blue-900 text-center">Featured Collections</h1>
+  <app-collection></app-collection>
+
+<div class="justify-center items-center text-center flex flex-col mt-12 px-4">
+
+  <h1 class="text-2xl sm:text-2xl md:text-4xl lg:text-5xl mb-8 font-bold font-serif text-blue-900 text-center">Download Our Latest Catelogue</h1>
+  <p class="text-lg mb-4">Explore our complete collection and find the perfect titles for your project</p>
+  <div class="flex gap-3 p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-400 font-bold text-sm sm:text-sm md:text-lg lg:text-2xl">
+    <lucide-angular class="pt-1" [img]="downloadArreow"></lucide-angular>
+    <p>Download Catelogue</p>
+  </div>
+</div>
+</div>
+<div>
+  <app-suppliers></app-suppliers>
+</div>
+<div>
+  <app-bathware-brands></app-bathware-brands>
+</div>
+<div>
+<h1 class="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold font-serif text-blue-900 text-center mt-12 mb-8">
+  Visit Our Showroom
+</h1>
+<div class="flex justify-center items-center">
+  <p class="text-2xl font-serif mb-16">Map is going to be displayed here...</p>
+</div>
+
+</div>
+
