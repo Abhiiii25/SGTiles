@@ -39,7 +39,14 @@
       </div>
 
       <!-- Mobile Menu Button -->
-      <button class="md:hidden text-gray-800" aria-label="Toggle menu">
+      <button
+        class="md:hidden text-gray-800"
+        aria-label="Toggle menu"
+        (click)="toggleMobileMenu()"
+      >
+        <!-- Show hamburger icon if menu is closed, and X icon if menu is open -->
+        @if(!isMobileMenuOpen){
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -54,11 +61,30 @@
         >
           <path d="M3 12h18M3 6h18M3 18h18"></path>
         </svg>
+        }@else{
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-x h-6 w-6"
+        >
+          <path d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+        }
       </button>
     </div>
 
     <!-- Mobile Menu Links -->
-    <div class="md:hidden mt-4 space-y-4 bg-gray-100 p-4">
+    <div
+      [ngClass]="{ block: isMobileMenuOpen, hidden: !isMobileMenuOpen }"
+      class="md:hidden mt-4 space-y-4 bg-gray-100 p-4"
+    >
       <a routerLink="home" class="block text-gray-800 hover:text-blue-400"
         >Home</a
       >
@@ -83,35 +109,3 @@
     </div>
   </nav>
 </header>
-
-<!-- <header class="bg-gray-100 py-4 px-6 display-flex">
-  <nav>
-    <div>
-      <a routerLink="">
-      <div>
-        <img src="logo.jpg" alt="ShopLogo" class="w-45 h-20">
-      </div>
-      <span>
-        SADHGURU TILES &amp; MARBLES
-      </span>
-    </a>
-    <div class="p-4 text-white bg-blue-500 px-4 gap-4 ">
-       <a routerLink=""></a> -->
-<!-- <a routerLink="home" class="mr-4 text-gray-800 hover:text-white">Home</a>
-      <a routerLink="product" class="mr-4 text-gray-800 hover:text-white">Products</a>
-      <a routerLink="about" class="mr-4 text-gray-800 hover:text-white">About Us</a>
-      <a routerLink="contact" class="mr-4 text-gray-800 hover:text-white">Contact Us</a>
-      <a routerLink="career"  class="mr-4 text-gray-800 hover:text-white">Career</a>
-      <a routerLink="login" class="mr-4 text-gray-800 hover:text-white">Login</a>
-      <a routerLink="signup" class="mr-4 text-gray-800 hover:text-white">SignUp</a>
-    </div> -->
-<!-- <button aria-label="Toggle menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-6 w-6">
-        <path d="M18 6 6 18"></path>
-        <path d="m6 6 12 12"></path>
-      </svg>
-    </button> -->
-<!-- </div>
-  </nav>
-</header>
-  -->
