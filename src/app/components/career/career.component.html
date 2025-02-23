@@ -5,21 +5,26 @@
   <p class="text-sm sm:text-sm md:text-sm lg:text-lg p-1">We're always looking for talented individuals to join our growing team at our location in Lohagaon, Pune. Check out our current openings below.</p>
 <br>
 <br>
+
+@for(job of jobs; track job){
+
 <div>
 
   <div class="m-4 p-6 bg-white rounded-lg shadow-xl border border-gray-200">
     <div>
       <div class="flex flex-row justify-between">
         <!-- <p class="bg-green-200 p-1 rounded-lg">Part-time</p> -->
-      <h2 class="text-lg sm:text-lg md:text-2xl lg:text-3xl font-semibold">Sales Manager</h2>
+      <h2 class="text-lg sm:text-lg md:text-2xl lg:text-3xl font-semibold">{{job.title}}</h2>
       <p class="bg-blue-200 p-1 rounded-lg text-xs sm:text-xs md:text-sm lg:text-base      ">Full-time</p>
     </div>
+    <p class="mt-2 bg-blue-200 p-1 rounded-lg text-xs sm:text-xs md:text-sm lg:text-base">{{job.adShor}}</p>
+    <p class="bg-blue-200 p-1 rounded-lg text-xs sm:text-xs md:text-sm lg:text-base">{{job.shortDes}}</p>
 
     </div>
     <div class="bg-gray-100 rounded-lg p-4 mt-4">
       <h3 class="text-base sm:text-base md:text-lg lg:text-2xl font-semibold text-black">Requirements</h3>
       <p class="text-gray-800">
-        5+ years in sales management, strong leadership skills.
+        {{job.reqdes}}
       </p>
     </div>
     <button class="text-xs sm:text-xs md:text-base lg:text-lg font-semibold bg-blue-600 p-3 rounded-lg mt-4 text-white cursor-pointer hover:bg-blue-400  duration-300 ease-in hover:scale-110">
@@ -27,6 +32,7 @@
   </div>
 
 </div>
+}
 
 <div class="m-4 mt-12 p-6 bg-white rounded-lg shadow-xl border border-gray-200">
   <h3 class="text-xl sm:text-xl md:text-2xl lg:text-3xl font-semibold text-black mb-4">Locations</h3>
