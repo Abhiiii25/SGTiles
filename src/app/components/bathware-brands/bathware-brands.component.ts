@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './bathware-brands.component.css'
 })
 export class BathwareBrandsComponent {
-
+  imageList: any[] = [
+    "Authorized_Bathwere_Brands/CERA.jpg", "Authorized_Bathwere_Brands/ELVIS.jpg", "Authorized_Bathwere_Brands/Hindware.jpg", "Authorized_Bathwere_Brands/jaguar.jpg", "Authorized_Bathwere_Brands/KOHLER.jpg", "Authorized_Bathwere_Brands/RACY.jpg"
+  ];
 }
