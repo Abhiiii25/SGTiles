@@ -40,7 +40,7 @@ export class ImageSliderComponent implements OnInit { // ✅ Ensure the class is
   }
 
   images = [
-    '/product/img1.jpg', '/product/img2.jpg', '/product/img3.jpg', '/product/img4.jpg', '/product/img5.jpg'
+    '/slider_images/img1.jpg', '/slider_images/img2.jpg', '/slider_images/img3.jpg', '/slider_images/img4.jpg', '/slider_images/img5.jpg', '/slider_images/img6.jpg', '/slider_images/img7.jpg'
   ];
 
   ngOnInit(): void {
