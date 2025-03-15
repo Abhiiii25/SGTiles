@@ -7,6 +7,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ProductComponent } from './components/product/product.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'career', component: CareerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
+  // { path: 'chatbot', component: ChatbotComponent },
   { path: '**', component: PagenotfoundComponent },
 ];

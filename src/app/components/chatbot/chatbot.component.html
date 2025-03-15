@@ -1,0 +1,97 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-4xl font-semibold text-center mb-6">Chat AI</h1>
+
+  <div class="flex flex-col items-center space-y-6">
+
+    <!-- Conditional display of Answer or loading spinner -->
+     @if(Answer){
+
+       <!-- <div *ngIf="Answer; else loading"> -->
+         <!-- <div class="text-lg text-gray-700">{{ Answer }}</div> -->
+         <div class="answer">
+          @for(line of Answer.split('\n');track line){
+
+            <p [innerHTML]="line"></p>
+          }
+        </div>
+      <!-- </div> -->
+      <!-- <div class="answer " [innerHTML]="Answer"></div> -->
+
+      }@else {
+
+
+        <!-- Loading Spinner -->
+        <ng-template #loading>
+          <div class="flex justify-center items-center h-48">
+            <div class="border-t-4 border-blue-500 border-solid w-16 h-16 rounded-full animate-spin"></div>
+          </div>
+        </ng-template>
+      }
+
+    <!-- User Input and Ask Button -->
+    <div class="flex items-center space-x-4 sticky">
+      <input
+        type="text"
+        [(ngModel)]="Question"
+        class="border border-gray-300 rounded-md p-2 w-72"
+        placeholder="Ask a question..."
+        [disabled]="isLoading"
+      />
+      <button
+  (click)="findAnswer()"
+  class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+  [disabled]="isLoading || !Question.trim()"
+>
+  <ng-container *ngIf="isLoading; else showButton">
+    <!-- Loading Spinner -->
+    <div class="flex justify-center items-center">
+      <div class="border-t-2 border-white-500 border-solid w-6 h-6 rounded-full animate-spin"></div>
+    </div>
+  </ng-container>
+  <ng-template #showButton>
+    <!-- Button Text -->
+    Ask
+  </ng-template>
+</button>
+
+      <!-- <button
+        (click)="findAnswer()"
+        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+        [disabled]="isLoading || !Question.trim()"
+      >
+      @if(isLoading){
+        <ng-template #loading>
+          <div class="flex justify-center items-center h-48">
+            <div class="border-t-4 border-white-500 border-solid w-16 h-16 rounded-full animate-spin"></div>
+          </div>
+        </ng-template>
+      }@else {
+
+        Ask
+      }
+      </button> -->
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div>
+  <h1>Chat Ai</h1>
+  <div>
+    @if(Answer){
+
+      <div>{{Answer}}</div>
+    }@else {
+      <div class="flex justify-center items-center h-screen">
+        <div class="border-t-4 border-blue-500 border-solid w-16 h-16 rounded-full animate-spin"></div>
+      </div>
+
+    }
+    <br>
+    <br>
+    <input type="text" [(ngModel)]="Question" >
+    <button (click)="findAnswer()">Ask</button>
+
+  </div>
+</div> -->

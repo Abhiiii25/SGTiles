@@ -36,6 +36,20 @@
         <a routerLink="signup" class="text-gray-800 hover:text-blue-400"
           >SignUp</a
         >
+          <button (click)="toggleModal()" class=" text-black shadow-md rounded-md p-2 hover:bg-gray-200 bg-white transition duration-200 ease-in-out cursor-pointer">
+
+            <lucide-angular
+              [img]="bot_icon"
+              size="20"
+            >
+
+          </lucide-angular><span class="relative flex size-1">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-600 opacity-75"></span>
+            <span class="relative inline-flex size-1 rounded-full bg-red-600"></span>
+          </span>
+
+
+          </button>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -106,6 +120,34 @@
       <a routerLink="signup" class="block text-gray-800 hover:text-blue-400"
         >SignUp</a
       >
+
+          <button (click)="toggleModal()" class=" text-black shadow-md rounded-md bg-white p-2 hover:bg-gray-200 transition duration-200 ease-in-out cursor-pointer">
+
+            <lucide-angular
+              [img]="bot_icon"
+              size="20"
+            >
+
+          </lucide-angular><span class="relative flex size-1">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-600 opacity-75"></span>
+            <span class="relative inline-flex size-1 rounded-full bg-red-600"></span>
+          </span>
+
+
+          </button>
     </div>
   </nav>
 </header>
+
+
+
+
+<div *ngIf="isModalVisible" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+
+    <app-chatbot></app-chatbot>
+    <button (click)="toggleModal()" class="mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition">
+      Close
+    </button>
+  </div>
+</div>
