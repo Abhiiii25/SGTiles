@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LucideAngularModule,BotMessageSquare } from 'lucide-angular';
+import { LucideAngularModule,BotMessageSquare,X } from 'lucide-angular';
 import { ChatbotComponent } from "../chatbot/chatbot.component";
 @Component({
   selector: 'app-navbar',
@@ -11,6 +11,8 @@ import { ChatbotComponent } from "../chatbot/chatbot.component";
 })
 export class NavbarComponent {
   bot_icon=BotMessageSquare;
+  close_icon=X;
+
 
  isMobileMenuOpen = false;
 

@@ -13,9 +13,9 @@ export class CollectionComponent {
   expArrow = MoveRight;
 
   cardsData: any = [
-    { title: "Modern Living", shortDes: "Contemporary designs for modern spaces", img: '/product/img1.jpg' },
-    { title: "Classic Elegance", shortDes: "Timeless Patterns and textures", img: '/product/img2.jpg' },
-    { title: "Outdoor Collection", shortDes: "Durable tiles for outdoor spaces", img: '/product/img3.jpg' }
+    { title: "Modern Living", shortDes: "Contemporary designs for modern spaces", img: '/slider_images/img1.jpg' },
+    { title: "Classic Elegance", shortDes: "Timeless Patterns and textures", img: '/slider_images/img4.jpg' },
+    { title: "Outdoor Collection", shortDes: "Durable tiles for outdoor spaces", img: '/slider_images/img5.jpg' }
 
   ]
 

@@ -18,6 +18,5 @@ export const routes: Routes = [
   { path: 'career', component: CareerComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  // { path: 'chatbot', component: ChatbotComponent },
   { path: '**', component: PagenotfoundComponent },
 ];

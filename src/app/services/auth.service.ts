@@ -32,19 +32,19 @@ export class AuthService {
 
 
 
-  //  setUserData(data:any){
-  //   localStorage.setItem('user',JSON.stringify(data.user));
-  //   localStorage.setItem('token',data.token);
+   setUserData(data:any){
+    localStorage.setItem('user',JSON.stringify(data.user));
+    localStorage.setItem('token',data.token);
 
-  //  }
-  //  getUserData(){
-  //   const user = localStorage.getItem('user');
-  //   return user ? JSON.parse(user) : null;
+   }
+   getUserData(){
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
 
-  //  }
-  // getToken(){
-  //   return localStorage.getItem('token');
-  // }
+   }
+  getToken(){
+    return localStorage.getItem('token');
+  }
 
   // chatAnswer(questions:any){
   //   return this.http.post(`${api}/chatbot`,{"message":questions}
@@ -54,14 +54,6 @@ export class AuthService {
   // }
 
 
-  // chatAnswer(questions: string) {
-  //   const headers = new HttpHeaders({
-  //     // 'Authorization': `Bearer ${this.token}`,  // Uncomment if needed
-  //     'Content-Type': 'application/json', // Ensures the body is sent as JSON
-  //   });
-
-  //   return this.http.post(`${api}/chatbot`, { message: questions }, { headers });
-  // }
 
 
   chatAnswer(questions: string) {
