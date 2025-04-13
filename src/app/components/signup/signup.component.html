@@ -3,50 +3,54 @@
   (ngSubmit)="onSignup()"
   class="m-8 px-8 py-8 pt-10 pb-10 flex flex-col gap-4 max-w-sm mx-auto bg-white shadow-md rounded-lg"
 >
-<div>
-  <h1 class="text-2xl font-semibold text-center">SignUp</h1>
-</div>
+  <div>
+    <h1 class="text-2xl font-semibold text-center">SignUp</h1>
+  </div>
   <!-- First Name Input -->
   <div class="flex flex-col">
-    <label for="fname" class="text-gray-700 font-semibold mb-2">First Name</label>
+    <label for="fname" class="text-gray-700 font-semibold mb-2"
+      >First Name</label
+    >
     <input
       type="text"
       id="fname"
       formControlName="fname"
       placeholder="Enter your first name"
       class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      [class.border-red-500]="signupForm.get('fname')?.hasError && signupForm.get('fname')?.touched"
+      [class.border-red-500]="
+        signupForm.get('fname')?.hasError && signupForm.get('fname')?.touched
+      "
     />
     @if(signupForm.get('fname')?.errors && signupForm.get('fname')?.touched){
-      <div class="text-red-500 text-sm mt-1">
-        @if(signupForm.get('fname')?.hasError('required')){
-          First name is required.
-        }@else if (signupForm.get('fname')?.hasError('minlength')) {
-          First name must be at least 2 characters long.
-        }
-      </div>
+    <div class="text-red-500 text-sm mt-1">
+      @if(signupForm.get('fname')?.hasError('required')){ First name is
+      required. }@else if (signupForm.get('fname')?.hasError('minlength')) {
+      First name must be at least 2 characters long. }
+    </div>
     }
   </div>
 
   <!-- Last Name Input -->
   <div class="flex flex-col">
-    <label for="lname" class="text-gray-700 font-semibold mb-2">Last Name</label>
+    <label for="lname" class="text-gray-700 font-semibold mb-2"
+      >Last Name</label
+    >
     <input
       type="text"
       id="lname"
       formControlName="lname"
       placeholder="Enter your last name"
       class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      [class.border-red-500]="signupForm.get('lname')?.hasError && signupForm.get('lname')?.touched"
+      [class.border-red-500]="
+        signupForm.get('lname')?.hasError && signupForm.get('lname')?.touched
+      "
     />
     @if(signupForm.get('lname')?.errors && signupForm.get('lname')?.touched){
-      <div class="text-red-500 text-sm mt-1">
-        @if(signupForm.get('lname')?.hasError('required')){
-          Last name is required.
-        }@else if (signupForm.get('lname')?.hasError('minlength')) {
-          Last name must be at least 2 characters long.
-        }
-      </div>
+    <div class="text-red-500 text-sm mt-1">
+      @if(signupForm.get('lname')?.hasError('required')){ Last name is required.
+      }@else if (signupForm.get('lname')?.hasError('minlength')) { Last name
+      must be at least 2 characters long. }
+    </div>
     }
   </div>
 
@@ -59,40 +63,68 @@
       formControlName="email"
       placeholder="Enter your email"
       class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      [class.border-red-500]="signupForm.get('email')?.hasError && signupForm.get('email')?.touched"
+      [class.border-red-500]="
+        signupForm.get('email')?.hasError && signupForm.get('email')?.touched
+      "
     />
     @if(signupForm.get('email')?.errors && signupForm.get('email')?.touched){
-      <div class="text-red-500 text-sm mt-1">
-        @if(signupForm.get('email')?.hasError('required')){
-          Email is required.
-        }@else if (signupForm.get('email')?.hasError('email')) {
-          Please enter a valid email.
-        }
-      </div>
+    <div class="text-red-500 text-sm mt-1">
+      @if(signupForm.get('email')?.hasError('required')){ Email is required.
+      }@else if (signupForm.get('email')?.hasError('email')) { Please enter a
+      valid email. }
+    </div>
     }
   </div>
 
   <!-- Password Input -->
   <div class="flex flex-col">
-    <label for="password" class="text-gray-700 font-semibold mb-2">Password</label>
+    <label for="password" class="text-gray-700 font-semibold mb-2"
+      >Password</label
+    >
     <input
       type="password"
       id="password"
       formControlName="password"
       placeholder="Enter your password"
       class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-      [class.border-red-500]="signupForm.get('password')?.hasError && signupForm.get('password')?.touched"
+      [class.border-red-500]="
+        signupForm.get('password')?.hasError &&
+        signupForm.get('password')?.touched
+      "
     />
-    @if(signupForm.get('password')?.errors && signupForm.get('password')?.touched){
-      <div class="text-red-500 text-sm mt-1">
-
-      @if(signupForm.get('password')?.hasError('required')){
-        Password is required.
-      }@else if (signupForm.get('password')?.hasError('minlength')) {
-        Password must be at least 6 characters long.
-      }
+    @if(signupForm.get('password')?.errors &&
+    signupForm.get('password')?.touched){
+    <div class="text-red-500 text-sm mt-1">
+      @if(signupForm.get('password')?.hasError('required')){ Password is
+      required. }@else if (signupForm.get('password')?.hasError('minlength')) {
+      Password must be at least 6 characters long. }
     </div>
-  }
+    }
+  </div>
+
+  <!-- Confirm Password Input -->
+  <div class="flex flex-col">
+    <label for="confirmPassword" class="text-gray-700 font-semibold mb-2"
+      >Confirm Password</label
+    >
+    <input
+      type="password"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+      placeholder="Confirm your password"
+      class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      [class.border-red-500]="
+        signupForm.hasError('passwordMismatch') &&
+        signupForm.get('confirmPassword')?.touched
+      "
+    />
+    @if(signupForm.hasError('passwordMismatch') &&
+    signupForm.get('confirmPassword')?.touched){
+    <div class="text-red-500 text-sm mt-1">Passwords do not match.</div>
+    } @if(signupForm.get('confirmPassword')?.errors?.['required'] &&
+    signupForm.get('confirmPassword')?.touched){
+    <div class="text-red-500 text-sm mt-1">Please confirm your password.</div>
+    }
   </div>
 
   <!-- Submit Button -->

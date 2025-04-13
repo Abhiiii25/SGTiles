@@ -5,6 +5,9 @@ import { LucideAngularModule, MoveRight, ArrowDownToLine } from 'lucide-angular'
 import { CollectionComponent } from "../collection/collection.component";
 import { SuppliersComponent } from "../suppliers/suppliers.component";
 import { BathwareBrandsComponent } from "../bathware-brands/bathware-brands.component";
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   imports: [ImageSliderComponent, CommonModule, LucideAngularModule, CollectionComponent, CollectionComponent, SuppliersComponent, BathwareBrandsComponent],
@@ -16,12 +19,39 @@ export class HomeComponent {
   expArrow = MoveRight;
   downloadArreow = ArrowDownToLine;
 
+  isLoggedIn!: boolean;
+
+  userData: any = null; // Initialize userData to null
+
+ constructor(
+  // private _auth:AuthService,
+  private _router:Router){}
+
+  ngOnInit(){
+    // this.isLoggedIn=this._auth.isLoggedIn()
+
+    // if(this.isLoggedIn){
+    //   this.userData=this._auth.getUserData()
+    //   if(this.userData){
+    //   Swal.fire(
+    //     {
+    //       toast: true,
+    //       icon: 'success',
+    //       title: 'Welcome!',
+    //       text: `Hello ${this.userData.firstName}, you are logged in.`,
+    //       showConfirmButton: false,
+    //       timer: 3000,
+    //       position: 'top',
+    //     }
+    //   )
+    //   }
+    // }
+  }
 
 
   gotoProduts() {
-    // this.Routes.navigate(['product'])
-    alert("Need to Implement pendding.....???");
-    console.log("Product button is working");
+    this._router.navigate(['product'])
+
   }
 
 }

@@ -1,67 +1,99 @@
 // import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { api,geminiApi } from '../env/env.js'
+import {environments } from '../environments/environments.js'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
-import { response } from 'express';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // private token = localStorage.getItem('token');
-  userData: any;
+  private token: string = '';
+  private isBrowser: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    if (this.isBrowser) {
+      this.token = localStorage.getItem('token') || '';
+    }
+  }
 
   login(user: any) {
-    return this.http.post(`${api}/login`, { email: user.email, password: user.password },
-      // {headers:{Authorization:`Bearer ${this.token}`}}
-    )
+    return this.http.post(`${environments.api}/api/auth/login`, {
+      email: user.email,
+      password: user.password
+    }, {
+      headers: { Authorization: `Bearer ${this.token}` }
+    });
   }
 
-
-  register(
-    username: string,
-    email: string,
-    password: string,
-  ) {
-    return this.http.post(`${api}/register`, { username, email, password })
+  register(user: any) {
+    return this.http.post(`${environments.api}/api/auth/signup`, {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password
+    });
   }
 
-
-
-   setUserData(data:any){
-    localStorage.setItem('user',JSON.stringify(data.user));
-    localStorage.setItem('token',data.token);
-
-   }
-   getUserData(){
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
-
-   }
-  getToken(){
-    return localStorage.getItem('token');
+  setUserData(data: any) {
+    if (this.isBrowser) {
+      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('isLoggedIn', 'true');
+    }
   }
 
-  // chatAnswer(questions:any){
-  //   return this.http.post(`${api}/chatbot`,{"message":questions}
-  //   // {headers:{Authorization:`Bearer ${this.token}`}}
-  //   )
+  getUserData() {
+    if (this.isBrowser) {
+      const user = localStorage.getItem('user');
+      return user ? JSON.parse(user) : null;
+    }
+    return null;
+  }
 
+  getToken() {
+    if (this.isBrowser) {
+      return localStorage.getItem('token');
+    }
+    return null;
+  }
+  isLoggedIn(): boolean {
+    if (this.isBrowser) {
+      const value = localStorage.getItem('isLoggedIn');
+      return value === 'true'; // ensures it's a strict boolean
+    }
+    return false;
+  }
+
+  // isLoggedIn(){
+  //   if (this.isBrowser) {
+
+  //  const ss =localStorage.getItem('isLoggedIn');
+
+  //  return ss ? JSON.parse(ss) : null;
+  //   }
   // }
 
-
-
+  logout() {
+    if (this.isBrowser) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      localStorage.removeItem('isLoggedIn');
+    }
+  }
 
   chatAnswer(questions: string) {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json', // Ensures the body is sent as JSON
+      'Content-Type': 'application/json',
     });
 
-    // Replace `GEMINI_API_KEY` with your actual Gemini API Key
     const apiUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
     const requestBody = {
@@ -69,23 +101,22 @@ export class AuthService {
         {
           parts: [
             {
-              text: questions, // The question you want to send to Gemini
+              text: questions,
             },
           ],
         },
       ],
     };
 
-    // Send POST request to Gemini API
     return this.http.post(apiUrl, requestBody, {
       headers,
       params: {
-        key:geminiApi , // Replace with your actual API key
+        key: environments.geminiApi,
       },
     }).pipe(
       map((response: any) => {
         return response.candidates[0].content.parts[0].text;
       })
-    )
+    );
   }
 }
