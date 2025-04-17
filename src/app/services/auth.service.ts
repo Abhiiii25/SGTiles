@@ -1,5 +1,5 @@
 // import { HttpClient } from '@angular/common/http';
-import {environments } from '../environments/environments.js'
+import {environments } from '../../environments/environment.js'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
