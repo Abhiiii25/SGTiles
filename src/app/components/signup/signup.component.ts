@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SignUpService } from '../../services/sign-up.service';
-import { RouterLink } from '@angular/router';
-
+import { RouterLink, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-signup',
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
@@ -13,17 +14,27 @@ import { RouterLink } from '@angular/router';
 export class SignupComponent {
   signupForm!: FormGroup;
 
-  constructor(private _sf: FormBuilder, private _signupService: SignUpService) { }
+  constructor(private _sf: FormBuilder,
+    private _router:Router,
+    private _auth: AuthService) { }
 
   ngOnInit(): void {
     this.signupForm = this._sf.group({
       id: [],
-      fname: ['', [Validators.required, Validators.minLength(3)]],
-      lname: ['', [Validators.required, Validators.minLength(3)]],
+      fname: ['', [Validators.required, Validators.minLength(2)]],
+      lname: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
-      isLoggedIn: [false]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]]
+    }, {
+      validator: this.passwordMatchValidator
     });
+
+  }
+  passwordMatchValidator(formGroup: FormGroup){
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
   onSignup(): void {
@@ -39,68 +50,46 @@ export class SignupComponent {
         password: formData.password,
         isLoggedIn: formData.isLoggedIn
       };
+      const user = {
+        firstName: formData.fname,
+        lastName: formData.lname,
+        email: formData.email,
+        password: formData.password,
+      };
+      console.log(user);
+      this._auth.register(user).subscribe(
+        (response) => {
 
-      // Call the service to add the user
-      this._signupService.addUser(newUser);
-
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: 'Signed in successfully',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          this._router.navigate(['/login']);
+          console.log(response);
+        },
+        (error) => {
+          Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error signing in',
+            text: 'Please try again.',
+            showConfirmButton: false,
+            timer: 3000
+          });
+          console.log(error);
+        }
+      )
       // Reset the form after submission
       this.signupForm.reset();
-      alert("User Created Successfully!");
+      // alert("User Created Successfully!");
       console.log("User Created Successfully!");
     } else {
       console.log("Form is invalid.");
     }
   }
 }
-
-
-// import { CommonModule } from '@angular/common';
-// import { Component } from '@angular/core';
-// import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-// import { SignUpService } from '../../services/sign-up.service';
-
-// @Component({
-//   selector: 'app-signup',
-//   imports: [ReactiveFormsModule, CommonModule],
-//   templateUrl: './signup.component.html',
-//   styleUrl: './signup.component.css'
-// })
-// export class SignupComponent {
-
-//   singupForm!: FormGroup;
-
-//   constructor(private _sf: FormBuilder, private _signupService: SignUpService) { }
-//   newUserId: number = 101;
-//   ngOnInit(): void {
-//     this.singupForm = this._sf.group({
-//       id: [],
-//       fname: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-//       lname: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-//       password: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(16)])],
-//       email: ['', Validators.compose([Validators.required, Validators.email])],
-//       isLoggedIn: [false]
-//     })
-//   }
-
-
-//   onSignup() {
-//     if (this.singupForm.valid) {
-//       const formData = this.singupForm.value;
-
-//       const newUser = {
-//         id: 0,
-//         firstName: formData.fname,
-//         lastName: formData.lname,
-//         email: formData.email,
-//         password: formData.password,
-//         isLoggedIn: formData.isLoggedIn
-//       }
-//       this._signupService.addUser(newUser);
-//       this.singupForm.reset();
-//       alert("User Created Successfully!!");
-//       console.log("User Created Successfully!!");
-//     } else {
-//       console.log("Form is invalid");
-//     }
-//   }
-// }

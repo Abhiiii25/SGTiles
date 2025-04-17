@@ -8,6 +8,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ProductComponent } from './components/product/product.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { UnauthGuard } from './gaurds/unauth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +17,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutusComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'career', component: CareerComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent,canActivate: [UnauthGuard] },
+  { path: 'signup', component: SignupComponent ,canActivate:[UnauthGuard]},
   { path: '**', component: PagenotfoundComponent },
 ];

@@ -2,7 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SignUpService } from '../../services/sign-up.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink,Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { response } from 'express';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +17,9 @@ import { RouterLink } from '@angular/router';
 export class LoginComponent {
 
   loginForm!: FormGroup;
-  constructor(private _lf: FormBuilder, private _signupService: SignUpService) { }
+  constructor(private _lf: FormBuilder, private _auth:AuthService,
+    private _router:Router
+  ) { }
 
 
   ngOnInit(): void {
@@ -27,15 +33,36 @@ export class LoginComponent {
   onLogin(): void {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
-      const user = this._signupService.getUserByCredentials(loginData.email, loginData.password)
-      if (user) {
-        user.isLoggedIn = true
-        this._signupService.updateLoginStatus(user.email, user.isLoggedIn)
-        alert("Login is working")
-        alert(JSON.stringify(user));
-      } else {
-        alert("Login is not working")
-      }
+      this._auth.login(loginData).subscribe(
+        (response:any)=>{
+          this._auth.setUserData(response);
+          console.log('Login successful', response);
+          Swal.fire({
+            toast: true,
+            icon: 'success',
+            title: 'Success!',
+            text: 'You have logged in successfully.',
+            showConfirmButton: false,
+            timer: 3000,
+            position: 'top-end'
+          });
+          window.location.reload();
+          // this._router.navigate(['']);
+        },
+        (error:any)=>{
+          Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: 'Failed!',
+            text: 'Login failed. Please check your credentials.',
+            showConfirmButton: false,
+            timer: 3000,
+            position: 'top-end'
+          });
+          console.error('Login failed', error);
+        }
+
+      )
     }
 
   }
