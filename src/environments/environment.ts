@@ -3,7 +3,7 @@
 // export const aapi='http://localhost:3000';
 
 export const environments={
-  production: false,
+  production: true,
   api: 'http://localhost:3000',
   geminiApi: 'AIzaSyA7rky_0L86-fsXKQtibfSRMPqMiwr5Pt4'
 }

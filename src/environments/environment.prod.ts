@@ -1,5 +1,5 @@
 export const environments={
-  production: true,
+  production: false,
   // api: 'http://localhost:3000/api/auth',
   api:'https://sgtile-api.onrender.com/api/auth',
 
