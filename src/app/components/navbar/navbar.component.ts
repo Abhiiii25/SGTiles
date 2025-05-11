@@ -22,9 +22,9 @@ export class NavbarComponent {
  constructor(private _auth:AuthService){}
 
   ngOnInit(){
-    this.isLoggedIn=this._auth.isLoggedIn()
 
-    if(this.isLoggedIn){
+    if(this._auth.isLoggedIn()){
+      this.isLoggedIn=true;
       this.userData=this._auth.getUserData()
       if(this.userData){
       Swal.fire(
@@ -39,6 +39,8 @@ export class NavbarComponent {
         }
       )
       }
+    }else{
+      this.isLoggedIn=false;
     }
   }
 

@@ -6,12 +6,16 @@ import { environments } from '../../environments/environment';
 })
 export class ContactusService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
 
   sendContactForm(formData: any) {
     return this.http.post(`${environments.api}/api/contactus/`, formData);
+  }
+
+  sendJobApplication(formData: any) {
+    return this.http.post(`${environments.api}/api/job/create`, formData);
   }
 
 }
