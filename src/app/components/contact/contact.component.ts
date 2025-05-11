@@ -15,7 +15,7 @@ export class ContactComponent {
 
   contactForm!: FormGroup;
 
-  constructor(private _cf: FormBuilder, private _contactus:ContactusService,
+  constructor(private _cf: FormBuilder, private _contactus: ContactusService,
   ) { }
 
   currentId: number = 1;
@@ -29,13 +29,14 @@ export class ContactComponent {
   }
 
   contacted() {
-   const formData = {
+    const formData = {
       fullName: this.contactForm.value.fullname,
       email: this.contactForm.value.email,
       message: this.contactForm.value.message
     };
-    this._contactus.sendContactForm(formData).subscribe(
-      (response) => {
+    this._contactus.sendContactForm(formData).subscribe({
+
+      next: (response) => {
         Swal.fire({
           icon: 'success',
           title: 'Success',
@@ -43,13 +44,14 @@ export class ContactComponent {
         });
         this.contactForm.reset(); // Reset the form after successful submission
       },
-      (error) => {
+      error: (error) => {
         Swal.fire({
           icon: 'error',
           title: 'Error',
           text: 'Failed to submit the form. Please try again.'
         });
       }
+    }
     )
   }
 }

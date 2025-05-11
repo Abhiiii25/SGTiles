@@ -28,24 +28,7 @@ export class HomeComponent {
   private _router:Router){}
 
   ngOnInit(){
-    // this.isLoggedIn=this._auth.isLoggedIn()
-
-    // if(this.isLoggedIn){
-    //   this.userData=this._auth.getUserData()
-    //   if(this.userData){
-    //   Swal.fire(
-    //     {
-    //       toast: true,
-    //       icon: 'success',
-    //       title: 'Welcome!',
-    //       text: `Hello ${this.userData.firstName}, you are logged in.`,
-    //       showConfirmButton: false,
-    //       timer: 3000,
-    //       position: 'top',
-    //     }
-    //   )
-    //   }
-    // }
+   
   }
 
 

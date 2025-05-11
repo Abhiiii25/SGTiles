@@ -2,17 +2,19 @@
   @for(card of cardsData;track $index){
     <div
     [ngClass]="{
-      'hover:-rotate-3': $index === 0,          
+      'hover:-rotate-3': $index === 0,
       'hover:rotate-3': $index === cardsData.length - 1,
-      'hover:-translate-y-1': $index > 0 && $index < cardsData.length - 1  
-    }"    
+      'hover:-translate-y-1': $index > 0 && $index < cardsData.length - 1
+    }"
     class="overflow-hidden shadow-2xl rounded-2xl bg-white w-full h-100 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 transition-transform duration-300 hover:scale-140  hover:shadow-xl hover:bg-gray-100 hover:translate-y-2">
       <img src="{{card.img}}" alt="Modern Living" class="w-full h-50 rounded-t-2xl">
       <div class="px-5 py-4">
         <h1 class="text-blue-900 font-serif font-bold text-lg sm:text-lg md:text-2xl lg:text-3xl">         <p>{{card.title}}</p>
         </h1>
          <p>{{card.shortDes}}</p>
-        <div class="flex gap-2 font-bold text-md sm:text-md md:text-xl lg:text-2xl text-blue-600 hover:text-blue-400 hover:ease-out hover:gap-4 duration-75 p-4 rounded-lg cursor-pointer">
+        <div
+        (click)="gotoProduts()"
+        class="flex gap-2 font-bold text-md sm:text-md md:text-xl lg:text-2xl text-blue-600 hover:text-blue-400 hover:ease-out hover:gap-4 duration-75 p-4 rounded-lg cursor-pointer">
           <p>View Collections</p>
           <lucide-angular class="mt-1" [img]="expArrow"></lucide-angular>
         </div>

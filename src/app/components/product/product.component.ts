@@ -8,83 +8,105 @@ import { Component } from '@angular/core';
   styleUrl: './product.component.css'
 })
 export class ProductComponent {
-
   products: any[] = [
     {
       id: 1,
-      name: "Marble Elegance",
+      name: "ESSCO Catalogue",
       category: "Floor Tiles",
       size: "24x24 inches",
       thickness: "10mm",
       finish: "Polished",
       color: "White with Gray Veins",
-      price: 45.99,
       coverage: "16 sq ft/box",
       stock: 150,
       rating: 4.8,
-      image: "https://via.placeholder.com/300x300?text=Marble+Elegance",
-      description: "Premium marble-effect porcelain tiles with realistic veining for luxurious interiors."
+      pdfFile: "catelogue/ESSCO_CATALOGUE.pdf",
+      description: "ESSCO_CATALOGUE.pdf - Explore the complete ESSCO tile collection catalogue."
     },
     {
       id: 2,
-      name: "Wooden Whisper",
+      name: "Look Book",
       category: "Wooden Planks",
       size: "6x36 inches",
       thickness: "8mm",
       finish: "Matte",
       color: "Oak Brown",
-      price: 32.50,
       coverage: "18 sq ft/box",
       stock: 220,
       rating: 4.6,
-      image: "https://via.placeholder.com/300x300?text=Wooden+Whisper",
-      description: "Wood-look ceramic tiles with authentic grain texture, perfect for cozy spaces."
+      pdfFile: "catelogue/Look_Book.pdf",
+      description: "Look_Book.pdf - Browse the latest tile designs and inspirations."
     },
     {
       id: 3,
-      name: "Metro Shine",
+      name: "Raindrop Sadhguru 600x600",
       category: "Wall Tiles",
       size: "3x6 inches",
       thickness: "6mm",
       finish: "Glossy",
       color: "Subway White",
-      price: 12.75,
       coverage: "5 sq ft/box",
       stock: 350,
       rating: 4.4,
-      image: "https://via.placeholder.com/300x300?text=Metro+Shine",
-      description: "Classic subway tiles with high-gloss finish for timeless kitchen/bathroom walls."
+      pdfFile: "catelogue/Raindrop_Sadhguru_600x600.pdf",
+      description: "Raindrop_Sadhguru_600x600.pdf - Detailed catalogue for Raindrop Sadhguru 600x600mm tiles."
     },
     {
       id: 4,
-      name: "Terrazzo Touch",
+      name: "Sadhguru 12x18 Bathroom Wall",
       category: "Decorative Tiles",
       size: "12x12 inches",
       thickness: "9mm",
       finish: "Honed",
       color: "Multicolor Speckles",
-      price: 28.90,
       coverage: "10 sq ft/box",
       stock: 95,
       rating: 4.7,
-      image: "https://via.placeholder.com/300x300?text=Terrazzo+Touch",
-      description: "Trendy terrazzo-pattern tiles with composite chips for artistic flooring."
+      pdfFile: "catelogue/SADHGURU_12x18_Bathroom_wall.pdf",
+      description: "SADHGURU_12x18_Bathroom_wall.pdf - Catalogue for Sadhguru 12x18 bathroom wall tiles."
     },
     {
       id: 5,
-      name: "Slate Texture",
+      name: "Sadhguru Glossy EL 12x18",
       category: "Outdoor Tiles",
       size: "18x18 inches",
       thickness: "12mm",
       finish: "Natural",
       color: "Charcoal Gray",
-      price: 38.25,
       coverage: "12 sq ft/box",
       stock: 180,
       rating: 4.9,
-      image: "https://via.placeholder.com/300x300?text=Slate+Texture",
-      description: "Slate-effect anti-slip tiles ideal for patios and outdoor areas."
+      pdfFile: "catelogue/SADHGURU_Glossy_EL_12x18.pdf",
+      description: "SADHGURU_Glossy_EL_12x18.pdf - Glossy finish EL 12x18 tile catalogue."
+    },
+    {
+      id: 6,
+      name: "Sadhguru Matt 600x600mm",
+      category: "Outdoor Tiles",
+      size: "18x18 inches",
+      thickness: "12mm",
+      finish: "Natural",
+      color: "Charcoal Gray",
+      coverage: "12 sq ft/box",
+      stock: 180,
+      rating: 4.9,
+      pdfFile: "catelogue/SADHGURU_Matt_600x600mm.pdf",
+      description: "SADHGURU_Matt_600x600mm.pdf - Matt finish 600x600mm tile catalogue."
+    },
+    {
+      id: 7,
+      name: "Sadhguru Tiles Pune",
+      category: "Outdoor Tiles",
+      size: "18x18 inches",
+      thickness: "12mm",
+      finish: "Natural",
+      color: "Charcoal Gray",
+      coverage: "12 sq ft/box",
+      stock: 180,
+      rating: 4.9,
+      pdfFile: "catelogue/SADHGURU_TILES_PUNE.pdf",
+      description: "SADHGURU_TILES_PUNE.pdf - Sadhguru Tiles Pune collection catalogue."
     }
   ];
-  
+
 }

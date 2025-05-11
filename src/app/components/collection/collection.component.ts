@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { LucideAngularModule, MoveRight } from 'lucide-angular';
+import { LucideAngularModule, MoveRight, Route } from 'lucide-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collection',
@@ -9,6 +10,7 @@ import { LucideAngularModule, MoveRight } from 'lucide-angular';
   styleUrl: './collection.component.css'
 })
 export class CollectionComponent {
+  constructor(private _router: Router) { }
 
   expArrow = MoveRight;
 
@@ -19,5 +21,7 @@ export class CollectionComponent {
 
   ]
 
-
+  gotoProduts() {
+    this._router.navigate(['product'])
+  }
 }

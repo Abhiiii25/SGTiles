@@ -1,36 +1,44 @@
 <div class="my-10">
   <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-center mb-8">
-    Our Products
+    Our Catalogues
   </h1>
 
   <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-4">
     @for (pd of products; track pd) {
     <div
-      class="bg-white shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 rounded-xl overflow-hidden p-4"
+      class="bg-white shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 rounded-2xl overflow-hidden flex flex-col"
     >
-      <img
-        [src]="pd.image"
-        alt="{{ pd.name }}"
-        class="w-full h-48 object-contain rounded-md mb-4"
-      />
-
-      <h2 class="text-lg md:text-xl font-semibold mb-2 text-gray-800">
-        {{ pd.name }}
-      </h2>
-
-      <p class="text-sm text-gray-600 mb-2">
-        {{ pd.description }}
-      </p>
-
-      <p class="text-base font-medium text-blue-600 mb-4">
-        {{ pd.price | currency : "INR" }}
-      </p>
-
-      <button
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold transition-colors"
+      <div class="flex-1 flex flex-col p-4">
+        <h2 class="text-xl font-bold mb-1 text-blue-800 truncate">
+          {{ pd.name }}
+        </h2>
+        <div class="flex flex-wrap gap-2 text-xs text-gray-500 mb-2">
+          <span class="bg-gray-100 px-2 py-0.5 rounded">{{ pd.category }}</span>
+          <span class="bg-gray-100 px-2 py-0.5 rounded">{{ pd.size }}</span>
+          <span class="bg-gray-100 px-2 py-0.5 rounded">{{ pd.finish }}</span>
+        </div>
+        <p class="text-sm text-gray-700 mb-2 line-clamp-2">
+          {{ pd.description }}
+        </p>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-yellow-500">&#9733;</span>
+          <span class="font-semibold">{{ pd.rating }}</span>
+          <span class="text-xs text-gray-400">({{ pd.stock }} in stock)</span>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs text-gray-400 mb-4">
+          <span>Thickness: {{ pd.thickness }}</span>
+          <span>Color: {{ pd.color }}</span>
+          <span>Coverage: {{ pd.coverage }}</span>
+        </div>
+      </div>
+      <a
+        target="_blank"
+        [href]="pd.pdfFile"
+        class="block bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 text-center font-semibold rounded-b-2xl transition-colors"
+        title="View {{ pd.name }} Catalogue"
       >
-        Add to Cart
-      </button>
+        View Catalogue
+      </a>
     </div>
     }
   </div>
